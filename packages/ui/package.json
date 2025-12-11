@@ -14,7 +14,14 @@
   },
   "bugs": "https://github.com/comneed/lyra/issues",
   "homepage": "https://github.com/comneed/lyra#readme",
-  "keywords": ["react", "ui", "components", "design-system", "openai", "base-ui"],
+  "keywords": [
+    "react",
+    "ui",
+    "components",
+    "design-system",
+    "openai",
+    "base-ui"
+  ],
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.mjs",
   "types": "./dist/types/index.d.ts",
@@ -46,6 +53,10 @@
     "test:coverage": "vitest run --project=unit --coverage",
     "test:a11y": "node scripts/test-a11y.mjs",
     "chromatic": "chromatic"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.28.4",

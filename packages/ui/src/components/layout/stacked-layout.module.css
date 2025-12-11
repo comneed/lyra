@@ -1,0 +1,134 @@
+@layer components {
+  /* Layout Container */
+  .Layout {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    min-height: 100svh;
+    width: 100%;
+    flex-direction: column;
+    background-color: var(--color-bg-surface-default, #fff);
+  }
+
+  @media (min-width: 1024px) {
+    .Layout {
+      background-color: var(--color-bg-surface-elevated, #f4f4f5); /* zinc-100 */
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    @media (min-width: 1024px) {
+      .Layout {
+        background-color: #09090b; /* zinc-950 */
+      }
+    }
+  }
+
+  /* Navbar Wrapper */
+  .NavbarHeader {
+    display: flex;
+    align-items: center;
+    padding-left: 1rem; /* 4 */
+    padding-right: 1rem;
+  }
+
+  .NavbarToggle {
+    padding-top: 0.625rem; /* 2.5 */
+    padding-bottom: 0.625rem;
+  }
+
+  @media (min-width: 1024px) {
+    .NavbarToggle {
+      display: none;
+    }
+  }
+
+  .NavbarContent {
+    min-width: 0;
+    flex: 1;
+  }
+
+  /* Main Content */
+  .Main {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding-bottom: 0.5rem; /* 2 */
+  }
+
+  @media (min-width: 1024px) {
+    .Main {
+      padding-left: 0.5rem; /* 2 */
+      padding-right: 0.5rem;
+    }
+  }
+
+  /* Content Inner */
+  .Content {
+    flex-grow: 1;
+    padding: 1.5rem; /* 6 */
+  }
+
+  @media (min-width: 1024px) {
+    .Content {
+      border-radius: var(--radius-lg, 8px);
+      background-color: var(--color-bg-surface-default, #fff);
+      padding: 2.5rem; /* 10 */
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-xs */
+      border: 1px solid var(--color-border-subtle, rgba(0, 0, 0, 0.05));
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    @media (min-width: 1024px) {
+      .Content {
+        background-color: var(--color-bg-surface-elevated, #18181b);
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+
+  .ContentInner {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 72rem; /* 6xl */
+  }
+
+  /* Mobile Sidebar Styles (Reused patterns mostly, but creating here for module encapsulation) */
+
+  .MobileSidebarPanel {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-width: 20rem; /* 80 */
+    padding: 0.5rem; /* 2 */
+    z-index: 50;
+    /* Transition handled by Dialog optionally */
+  }
+
+  .MobileSidebarContainer {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    border-radius: var(--radius-lg, 8px);
+    background-color: var(--color-bg-surface-default, #fff);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--color-border-subtle, rgba(0, 0, 0, 0.05));
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .MobileSidebarContainer {
+      background-color: var(--color-bg-surface-elevated, #18181b);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  .MobileSidebarHeader {
+    margin-bottom: -0.75rem; /* -3 */
+    padding-left: 1rem; /* 4 */
+    padding-right: 1rem;
+    padding-top: 0.75rem; /* 3 */
+  }
+}
