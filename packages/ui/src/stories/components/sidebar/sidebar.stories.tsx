@@ -9,8 +9,9 @@ import {
     SidebarHeading,
     SidebarDivider,
     SidebarSpacer,
-    SidebarLabel
+    SidebarLabel,
 } from '../../../components/sidebar/sidebar';
+import { SidebarClose } from '../../../components/layout/layout-sidebar-container';
 import { Avatar } from '../../../components/avatar/avatar';
 
 const meta = {
@@ -40,12 +41,15 @@ export const Default: Story = {
     render: () => (
         <Sidebar>
             <SidebarHeader>
-                <SidebarItem>
-                    <Avatar.Root data-size="sm">
-                        <Avatar.Fallback>LY</Avatar.Fallback>
-                    </Avatar.Root>
-                    <SidebarLabel>Lyra UI</SidebarLabel>
-                </SidebarItem>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <SidebarItem>
+                        <Avatar.Root data-size="sm">
+                            <Avatar.Fallback>LY</Avatar.Fallback>
+                        </Avatar.Root>
+                        <SidebarLabel>Lyra UI</SidebarLabel>
+                    </SidebarItem>
+                    <SidebarClose />
+                </div>
             </SidebarHeader>
 
             <SidebarBody>
@@ -101,10 +105,13 @@ export const WithIcons: Story = {
     render: () => (
         <Sidebar>
             <SidebarHeader>
-                <SidebarItem>
-                    <span style={{ fontSize: '20px' }}>💎</span>
-                    <SidebarLabel>Lyra UI</SidebarLabel>
-                </SidebarItem>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <SidebarItem>
+                        <span style={{ fontSize: '20px' }}>💎</span>
+                        <SidebarLabel>Lyra UI</SidebarLabel>
+                    </SidebarItem>
+                    <SidebarClose />
+                </div>
             </SidebarHeader>
 
             <SidebarBody>

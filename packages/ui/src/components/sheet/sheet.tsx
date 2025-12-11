@@ -7,7 +7,7 @@ import { CloseIcon } from "../../icons/close-icon";
 /**
  * Sheet (Side Drawer) Component
  *
- * Based on Base UI Dialog but styled as a sliding sheet.
+* Based on Base UI Dialog but styled as a sliding sheet.
  * Supported sides: 'left' | 'right' (default: 'right')
  */
 
@@ -66,10 +66,6 @@ const SheetContent = React.forwardRef<HTMLDivElement, SheetContentProps>(
                     data-side={side}
                 >
                     {children}
-                    <BaseDialog.Close className={styles.SheetClose}>
-                        <CloseIcon />
-                        <span className="sr-only">Close</span>
-                    </BaseDialog.Close>
                 </BaseDialog.Popup>
             </SheetPortal>
         );
@@ -126,7 +122,23 @@ const SheetDescription = React.forwardRef<HTMLParagraphElement, SheetDescription
 SheetDescription.displayName = "Sheet.Description";
 
 // Close (Custom trigger to close)
-const SheetClose = BaseDialog.Close;
+const SheetClose = React.forwardRef<HTMLButtonElement, React.ComponentPropsWithoutRef<typeof BaseDialog.Close>>(
+    ({ className, children, ...props }, ref) => (
+        <BaseDialog.Close
+            {...props}
+            ref={ref}
+            className={clsx(styles.SheetClose, className)}
+        >
+            {children || (
+                <>
+                    <CloseIcon />
+                    <span className="sr-only">Close</span>
+                </>
+            )}
+        </BaseDialog.Close>
+    )
+);
+SheetClose.displayName = "Sheet.Close";
 
 export const Sheet = {
     Root: SheetRoot,

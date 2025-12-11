@@ -20,6 +20,7 @@ import "./components/navbar/navbar.module.css";
 import "./components/sidebar/sidebar.module.css";
 import "./components/layout/auth-layout.module.css";
 import "./components/layout/sidebar-layout.module.css";
+import "./components/layout/layout-sidebar-container.module.css";
 import "./components/layout/stacked-layout.module.css";
 import "./components/sheet/sheet.module.css";
 
@@ -184,6 +185,7 @@ export {
   SidebarLabel,
   type SidebarItemProps,
 } from "./components/sidebar/sidebar";
+export { LayoutSidebarContainer, SidebarClose } from "./components/layout/layout-sidebar-container";
 export { AuthLayout } from "./components/layout/auth-layout";
 export { SidebarLayout } from "./components/layout/sidebar-layout";
 export * from './components/layout/stacked-layout';

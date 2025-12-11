@@ -34,8 +34,9 @@
     
     z-index: var(--z-index-dialog, 1001);
     
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: var(--spacing-4, 16px);
 
     /* 기본 위치: 오른쪽 */
     right: 0;
@@ -63,11 +64,23 @@
     transform: translateX(0);
   }
 
-  .SheetPopup[data-ending-style] {
+  /* Entry Animation */
+  @starting-style {
+    .SheetPopup[data-open] {
+      transform: translateX(100%);
+    }
+    .SheetPopup[data-side="left"][data-open] {
+      transform: translateX(-100%);
+    }
+  }
+
+  .SheetPopup[data-ending-style],
+  .SheetPopup[data-starting-style] {
     transform: translateX(100%);
   }
 
-  .SheetPopup[data-side="left"][data-ending-style] {
+  .SheetPopup[data-side="left"][data-ending-style],
+  .SheetPopup[data-side="left"][data-starting-style] {
     transform: translateX(-100%);
   }
 
@@ -90,9 +103,9 @@
 
   /* Close Button */
   .SheetClose {
-    position: absolute;
-    top: var(--spacing-4, 16px);
-    right: var(--spacing-4, 16px);
+    /* position: absolute; removed */
+    /* top: var(--spacing-4, 16px); removed */
+    /* right: var(--spacing-4, 16px); removed */
 
     display: flex;
     align-items: center;

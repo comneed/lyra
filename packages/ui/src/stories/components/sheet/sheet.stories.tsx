@@ -23,6 +23,7 @@ export const Default: Story = {
         <Sheet.Root>
             <Sheet.Trigger render={<Button>Open Sheet</Button>} />
             <Sheet.Content>
+                <Sheet.Close />
                 <Sheet.Header>
                     <Sheet.Title>Edit Profile</Sheet.Title>
                     <Sheet.Description>Make changes to your profile here.</Sheet.Description>
@@ -31,7 +32,7 @@ export const Default: Story = {
                     <p>Sheet content goes here...</p>
                 </div>
                 <Sheet.Footer>
-                    <Sheet.Close render={<Button variant="ghost">Cancel</Button>} />
+                    <Button variant="ghost">Cancel</Button>
                     <Button variant="primary">Save Changes</Button>
                 </Sheet.Footer>
             </Sheet.Content>
@@ -47,6 +48,7 @@ export const LeftSide: Story = {
         <Sheet.Root>
             <Sheet.Trigger render={<Button>Open Left Sheet</Button>} />
             <Sheet.Content side="left">
+                <Sheet.Close />
                 <Sheet.Header>
                     <Sheet.Title>Navigation</Sheet.Title>
                     <Sheet.Description>Navigate through the application.</Sheet.Description>
