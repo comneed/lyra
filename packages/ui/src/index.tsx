@@ -180,4 +180,5 @@ export {
 } from "./components/sidebar/sidebar";
 export { AuthLayout } from "./components/layout/auth-layout";
 export { SidebarLayout } from "./components/layout/sidebar-layout";
-export { StackedLayout } from "./components/layout/stacked-layout";
+export * from './components/layout/stacked-layout';
+export * from './components/sheet/sheet';

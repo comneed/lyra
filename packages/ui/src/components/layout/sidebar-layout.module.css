@@ -85,14 +85,15 @@
   /* Content Container */
   .Content {
     flex-grow: 1;
-    padding: 1.5rem; /* 6 */
+    /* Responsive Padding using clamp: 1.5rem (mobile) -> 2.5rem (desktop) */
+    padding: clamp(1.5rem, 5vw, 2.5rem);
   }
 
   @media (min-width: 1024px) {
     .Content {
       border-radius: var(--radius-lg, 8px);
       background-color: var(--color-bg-surface-default, #fff);
-      padding: 2.5rem; /* 10 */
+      /* padding handled by clamp */
       box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
       border: 1px solid var(--color-border-subtle, rgba(0, 0, 0, 0.05));
     }

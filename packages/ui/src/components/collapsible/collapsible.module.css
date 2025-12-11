@@ -12,9 +12,9 @@
     justify-content: flex-start;
     gap: var(--spacing-2, 8px);
 
-    padding: var(--spacing-3, 12px) var(--spacing-4, 16px);
+    padding: clamp(var(--spacing-2, 8px), 2vw, var(--spacing-3, 12px)) clamp(var(--spacing-3, 12px), 3vw, var(--spacing-4, 16px));
 
-    font-size: var(--font-size-base, 16px);
+    font-size: clamp(var(--font-size-sm, 14px), 2vw, var(--font-size-base, 16px));
     font-weight: var(--font-weight-medium, 500);
     line-height: var(--line-height-normal, 1.5);
     color: var(--color-text-primary, #000000);
@@ -57,8 +57,8 @@
   .CollapsiblePanel {
     overflow: hidden;
 
-    padding: var(--spacing-4, 16px);
-    margin-top: var(--spacing-2, 8px);
+    padding: clamp(var(--spacing-3, 12px), 3vw, var(--spacing-4, 16px));
+    margin-top: clamp(var(--spacing-1, 4px), 1vw, var(--spacing-2, 8px));
 
     background-color: var(--color-background-default, #ffffff);
     border: 1px solid var(--color-border-default, #e5e7eb);
@@ -112,17 +112,8 @@
   }
 
   /* 반응형 - 모바일에서 조정 */
-  @media (--sm-down) {
-    .CollapsibleTrigger {
-      padding: var(--spacing-2, 8px) var(--spacing-3, 12px);
-      font-size: var(--font-size-sm, 14px);
-    }
-
-    .CollapsiblePanel {
-      padding: var(--spacing-3, 12px);
-      margin-top: var(--spacing-1, 4px);
-    }
-  }
+  /* 반응형 - 모바일에서 조정 (clamp로 대체) */
+  /* padding: clamp(8px, 2vw, 12px) for trigger, clamp(12px, 3vw, 16px) for panel */
 
   /* 다크모드 지원 (선택적) */
   @media (prefers-color-scheme: dark) {

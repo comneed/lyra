@@ -1,17 +1,39 @@
 import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 import { clsx } from "clsx";
 import styles from "./button.module.css";
 
+const buttonVariants = cva(styles.Button, {
+  variants: {
+    variant: {
+      primary: styles['Button--primary'],
+      secondary: styles['Button--secondary'],
+      ghost: styles['Button--ghost'],
+      text: styles['Button--text'],
+    },
+    size: {
+      sm: styles['Button--sm'],
+      md: styles['Button--md'],
+      lg: styles['Button--lg'],
+    },
+    fullWidth: {
+      true: styles['Button--fullWidth'],
+    },
+    loading: {
+      true: styles['Button--loading'],
+    },
+  },
+  defaultVariants: {
+    variant: "primary",
+    size: "md",
+  },
+});
+
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  VariantProps<typeof buttonVariants> {
   /** 버튼 내용 */
   children: React.ReactNode;
-
-  /** 버튼 변형 */
-  variant?: 'primary' | 'secondary' | 'ghost' | 'text';
-
-  /** 버튼 크기 */
-  size?: 'sm' | 'md' | 'lg';
 
   /** 로딩 상태 */
   loading?: boolean;
@@ -21,9 +43,6 @@ export interface ButtonProps
 
   /** 아이콘 (오른쪽) */
   iconRight?: React.ReactNode;
-
-  /** 전체 너비 */
-  fullWidth?: boolean;
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -31,31 +50,25 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const {
       children,
       className,
-      variant = 'primary',
-      size = 'md',
+      variant,
+      size,
       loading = false,
       iconLeft,
       iconRight,
-      fullWidth = false,
+      fullWidth,
       disabled,
       ...other
     } = props;
-
-    const classNames = clsx(
-      styles.Button,
-      styles[`Button--${variant}`],
-      styles[`Button--${size}`],
-      fullWidth && styles['Button--fullWidth'],
-      loading && styles['Button--loading'],
-      className
-    );
 
     const isDisabled = disabled || loading;
 
     return (
       <button
         ref={ref}
-        className={classNames}
+        className={clsx(
+          buttonVariants({ variant, size, fullWidth, loading }),
+          className
+        )}
         type="button"
         disabled={isDisabled}
         aria-busy={loading}
@@ -82,13 +95,13 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           </span>
         )}
         {!loading && iconLeft && (
-          <span className={styles.ButtonIconLeft} aria-hidden="true">
+          <span className={styles.ButtonIcon} aria-hidden="true">
             {iconLeft}
           </span>
         )}
-        <span className={styles.ButtonContent}>{children}</span>
+        {children}
         {!loading && iconRight && (
-          <span className={styles.ButtonIconRight} aria-hidden="true">
+          <span className={styles.ButtonIcon} aria-hidden="true">
             {iconRight}
           </span>
         )}

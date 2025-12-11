@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { clsx } from 'clsx';
 import { NavbarItem } from '../navbar/navbar';
-import { Dialog } from '../dialog/dialog';
+import { Sheet } from '../sheet/sheet';
 import styles from './stacked-layout.module.css';
 
 function OpenMenuIcon() {
@@ -12,29 +12,15 @@ function OpenMenuIcon() {
     );
 }
 
-function CloseMenuIcon() {
-    return (
-        <svg data-slot="icon" viewBox="0 0 20 20" aria-hidden="true" style={{ width: 20, height: 20, fill: 'currentColor' }}>
-            <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
-        </svg>
-    );
-}
-
 function MobileSidebar({ open, close, children }: React.PropsWithChildren<{ open: boolean; close: () => void }>) {
     return (
-        <Dialog.Root open={open} onOpenChange={close}>
-            <Dialog.Portal>
-                <Dialog.Backdrop />
-                <Dialog.Popup className={styles.MobileSidebarPanel}>
-                    <div className={styles.MobileSidebarContainer}>
-                        <div className={styles.MobileSidebarHeader}>
-                            <Dialog.Close render={<NavbarItem aria-label="Close navigation"><CloseMenuIcon /></NavbarItem>} />
-                        </div>
-                        {children}
-                    </div>
-                </Dialog.Popup>
-            </Dialog.Portal>
-        </Dialog.Root>
+        <Sheet.Root open={open} onOpenChange={close}>
+            <Sheet.Content side="left" className={styles.MobileSidebarPanel}>
+                <div className={styles.MobileSidebarContainer}>
+                    {children}
+                </div>
+            </Sheet.Content>
+        </Sheet.Root>
     );
 }
 

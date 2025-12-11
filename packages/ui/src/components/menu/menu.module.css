@@ -47,8 +47,11 @@
 
     padding: var(--spacing-2, 8px);
 
+    /* Responsive Width with clamp */
+    /* Min 180px, Target 100vw - 16px, Max 320px */
     min-width: 180px;
-    max-width: min(calc(100vw - var(--spacing-4, 16px)), 320px);
+    max-width: clamp(180px, calc(100vw - 16px), 320px);
+    
     max-height: calc(100vh - var(--spacing-4, 16px));
 
     overflow-y: auto;
@@ -287,11 +290,10 @@
     color: var(--color-text-tertiary, #999999);
   }
 
-  /* 반응형 - 모바일에서 조정 */
+  /* 반응형 - 모바일에서 조정 (clamp로 대체되어 제거하거나 필요한 경우 유지) */
   @media (--sm-down) {
+    /* Padding adjustments if needed, but width is now clamped */
     .MenuPopup {
-      min-width: 160px;
-      max-width: calc(100vw - var(--spacing-2, 8px));
       padding: var(--spacing-1, 4px);
     }
 

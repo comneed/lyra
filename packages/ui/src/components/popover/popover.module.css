@@ -45,9 +45,10 @@
     border-radius: var(--border-radius-md, 8px);
     box-shadow: var(--shadow-lg, 0 10px 25px rgba(0, 0, 0, 0.15));
 
-    padding: var(--spacing-4, 16px);
+    padding: clamp(var(--spacing-3, 12px), 3vw, var(--spacing-4, 16px));
 
-    max-width: min(calc(100vw - var(--spacing-4, 16px)), 400px);
+    /* Max Width logic */
+    max-width: clamp(280px, calc(100vw - var(--spacing-4, 16px)), 400px);
     max-height: calc(100vh - var(--spacing-4, 16px));
 
     overflow-y: auto;
@@ -103,7 +104,7 @@
   /* Title */
   .PopoverTitle {
     margin: 0 0 var(--spacing-2, 8px);
-    font-size: var(--font-size-lg, 18px);
+    font-size: clamp(var(--font-size-base, 16px), 4vw, var(--font-size-lg, 18px));
     font-weight: var(--font-weight-semibold, 600);
     line-height: var(--line-height-tight, 1.25);
     color: var(--color-text-primary, #000000);
@@ -112,7 +113,7 @@
   /* Description */
   .PopoverDescription {
     margin: 0 0 var(--spacing-3, 12px);
-    font-size: var(--font-size-sm, 14px);
+    font-size: clamp(var(--font-size-xs, 12px), 3vw, var(--font-size-sm, 14px));
     line-height: var(--line-height-normal, 1.5);
     color: var(--color-text-secondary, #666666);
   }
@@ -158,21 +159,6 @@
   }
 
   /* 반응형 - 모바일에서 조정 */
-  @media (--sm-down) {
-    .PopoverPopup {
-      max-width: calc(100vw - var(--spacing-2, 8px));
-      padding: var(--spacing-3, 12px);
-    }
-
-    .PopoverTitle {
-      font-size: var(--font-size-base, 16px);
-    }
-
-    .PopoverDescription {
-      font-size: var(--font-size-xs, 12px);
-    }
-  }
-
   /* 포커스 트랩 */
   .PopoverPopup:focus {
     outline: none;

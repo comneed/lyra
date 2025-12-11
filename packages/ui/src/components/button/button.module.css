@@ -138,24 +138,10 @@
    * Child Elements
    * ========================================================================== */
 
-  .ButtonContent {
-    display: inline-flex;
-    align-items: center;
-  }
-
-  .ButtonIconLeft,
-  .ButtonIconRight {
+  .ButtonIcon {
     display: inline-flex;
     align-items: center;
     flex-shrink: 0;
-  }
-
-  .ButtonIconLeft {
-    margin-right: calc(var(--spacing-1, 4px) * -1);
-  }
-
-  .ButtonIconRight {
-    margin-left: calc(var(--spacing-1, 4px) * -1);
   }
 
   /* Loading spinner */

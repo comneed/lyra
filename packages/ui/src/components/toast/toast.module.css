@@ -22,8 +22,11 @@
     font-size: var(--font-size-base, 16px);
     line-height: var(--line-height-normal, 1.5);
     color: var(--color-text-default, #111827);
-    min-width: 320px;
-    max-width: 480px;
+    /* Responsive Width using clamp */
+    /* Min 280px (mobile), Target 100vw - 32px, Max 480px (desktop default) */
+    min-width: clamp(280px, calc(100vw - 32px), 320px);
+    max-width: clamp(320px, calc(100vw - 32px), 480px);
+    
     pointer-events: auto;
     overflow-wrap: break-word;
     word-wrap: break-word;
@@ -282,10 +285,5 @@
      반응형
      ============================================ */
 
-  @media (max-width: 640px) {
-    .Toast {
-      min-width: 280px;
-      max-width: calc(100vw - 32px);
-    }
-  }
+  /* clamp used above, media query removed */
 }

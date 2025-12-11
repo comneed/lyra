@@ -25,31 +25,31 @@ describe('Button', () => {
   describe('Variants', () => {
     it('primary variant를 적용한다', () => {
       const { container } = render(<Button variant="primary">Primary</Button>);
-      const className = container.firstChild?.className || '';
+      const className = (container.firstChild as HTMLElement)?.className || '';
       expect(className).toContain('Button--primary');
     });
 
     it('secondary variant를 적용한다', () => {
       const { container } = render(<Button variant="secondary">Secondary</Button>);
-      const className = container.firstChild?.className || '';
+      const className = (container.firstChild as HTMLElement)?.className || '';
       expect(className).toContain('Button--secondary');
     });
 
     it('ghost variant를 적용한다', () => {
       const { container } = render(<Button variant="ghost">Ghost</Button>);
-      const className = container.firstChild?.className || '';
+      const className = (container.firstChild as HTMLElement)?.className || '';
       expect(className).toContain('Button--ghost');
     });
 
     it('text variant를 적용한다', () => {
       const { container } = render(<Button variant="text">Text</Button>);
-      const className = container.firstChild?.className || '';
+      const className = (container.firstChild as HTMLElement)?.className || '';
       expect(className).toContain('Button--text');
     });
 
     it('기본 variant는 primary이다', () => {
       const { container } = render(<Button>Default</Button>);
-      const className = container.firstChild?.className || '';
+      const className = (container.firstChild as HTMLElement)?.className || '';
       expect(className).toContain('Button--primary');
     });
   });
@@ -57,25 +57,25 @@ describe('Button', () => {
   describe('Sizes', () => {
     it('small 크기를 적용한다', () => {
       const { container } = render(<Button size="sm">Small</Button>);
-      const className = container.firstChild?.className || '';
+      const className = (container.firstChild as HTMLElement)?.className || '';
       expect(className).toContain('Button--sm');
     });
 
     it('medium 크기를 적용한다', () => {
       const { container } = render(<Button size="md">Medium</Button>);
-      const className = container.firstChild?.className || '';
+      const className = (container.firstChild as HTMLElement)?.className || '';
       expect(className).toContain('Button--md');
     });
 
     it('large 크기를 적용한다', () => {
       const { container } = render(<Button size="lg">Large</Button>);
-      const className = container.firstChild?.className || '';
+      const className = (container.firstChild as HTMLElement)?.className || '';
       expect(className).toContain('Button--lg');
     });
 
     it('기본 size는 md이다', () => {
       const { container } = render(<Button>Default Size</Button>);
-      const className = container.firstChild?.className || '';
+      const className = (container.firstChild as HTMLElement)?.className || '';
       expect(className).toContain('Button--md');
     });
   });
@@ -83,7 +83,7 @@ describe('Button', () => {
   describe('Loading 상태', () => {
     it('loading 상태를 적용한다', () => {
       const { container } = render(<Button loading>Loading</Button>);
-      const className = container.firstChild?.className || '';
+      const className = (container.firstChild as HTMLElement)?.className || '';
       expect(className).toContain('Button--loading');
     });
 
@@ -149,7 +149,7 @@ describe('Button', () => {
   describe('Full Width', () => {
     it('fullWidth를 적용한다', () => {
       const { container } = render(<Button fullWidth>Full Width</Button>);
-      const className = container.firstChild?.className || '';
+      const className = (container.firstChild as HTMLElement)?.className || '';
       expect(className).toContain('Button--fullWidth');
     });
   });
@@ -236,7 +236,7 @@ describe('Button', () => {
       const { container } = render(
         <Button iconLeft={<span>Icon</span>}>Button</Button>
       );
-      const iconWrapper = container.querySelector('[class*="ButtonIconLeft"]');
+      const iconWrapper = container.querySelector('[class*="ButtonIcon"]');
       expect(iconWrapper).toHaveAttribute('aria-hidden', 'true');
     });
   });
@@ -255,7 +255,7 @@ describe('Button', () => {
         </Button>
       );
 
-      const className = container.firstChild?.className || '';
+      const className = (container.firstChild as HTMLElement)?.className || '';
       expect(className).toContain('Button--secondary');
       expect(className).toContain('Button--lg');
       expect(className).toContain('Button--fullWidth');

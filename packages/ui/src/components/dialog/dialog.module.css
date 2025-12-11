@@ -37,7 +37,8 @@
     max-width: min(calc(100vw - var(--spacing-4, 32px)), 500px);
     max-height: calc(100vh - var(--spacing-4, 32px));
 
-    padding: var(--spacing-6, 48px);
+    /* Responsive Padding with clamp */
+    padding: clamp(var(--spacing-4, 32px), 5vw, var(--spacing-6, 48px));
 
     z-index: var(--z-index-dialog, 1001);
 
@@ -67,7 +68,8 @@
   /* Title */
   .DialogTitle {
     margin: 0 0 var(--spacing-2, 16px);
-    font-size: var(--font-size-xl, 20px);
+    /* Responsive Font Size */
+    font-size: clamp(var(--font-size-lg, 18px), 4vw, var(--font-size-xl, 20px));
     font-weight: var(--font-weight-semibold, 600);
     line-height: var(--line-height-tight, 1.25);
     color: var(--color-text-primary, #000000);
@@ -76,71 +78,10 @@
   /* Description */
   .DialogDescription {
     margin: 0 0 var(--spacing-6, 48px);
-    font-size: var(--font-size-base, 16px);
+    /* Responsive Font Size */
+    font-size: clamp(var(--font-size-sm, 14px), 3vw, var(--font-size-base, 16px));
     line-height: var(--line-height-normal, 1.5);
     color: var(--color-text-secondary, #666666);
-  }
-
-  /* Close Button */
-  .DialogClose {
-    position: absolute;
-    top: var(--spacing-4, 32px);
-    right: var(--spacing-4, 32px);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 32px;
-    height: 32px;
-
-    background-color: transparent;
-    border: none;
-    border-radius: var(--border-radius-sm, 4px);
-
-    cursor: pointer;
-
-    color: var(--color-text-tertiary, #999999);
-
-    transition:
-      background-color 150ms ease-in-out,
-      color 150ms ease-in-out;
-  }
-
-  .DialogClose:hover {
-    background-color: var(--color-bg-hover, rgba(0, 0, 0, 0.05));
-    color: var(--color-text-secondary, #666666);
-  }
-
-  .DialogClose:focus-visible {
-    outline: 2px solid var(--color-focus-ring, #0066cc);
-    outline-offset: 2px;
-  }
-
-  .DialogClose:active {
-    background-color: var(--color-bg-active, rgba(0, 0, 0, 0.1));
-  }
-
-  /* Trigger Button */
-  .DialogTrigger {
-    /* 기본 버튼 스타일은 사용자 정의 가능 */
-    cursor: pointer;
-  }
-
-  /* 반응형 - @custom-media 사용 */
-  @media (--sm-down) {
-    .DialogPopup {
-      max-width: calc(100vw - var(--spacing-2, 16px));
-      padding: var(--spacing-4, 32px);
-    }
-
-    .DialogTitle {
-      font-size: var(--font-size-lg, 18px);
-    }
-
-    .DialogDescription {
-      font-size: var(--font-size-sm, 14px);
-    }
   }
 
   /* 포커스 트랩 시각적 피드백 */
