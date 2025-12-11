@@ -18,7 +18,7 @@
 
   /* Heading 1 - 가장 큰 제목 */
   .Text--h1 {
-    font-size: var(--font-size-4xl, 36px);
+    font-size: clamp(2rem, 5vw, 2.5rem); /* 32px ~ 40px */
     font-weight: var(--font-weight-bold, 700);
     line-height: var(--font-lineHeight-tight, 1.25);
     letter-spacing: -0.02em;
@@ -26,7 +26,7 @@
 
   /* Heading 2 - 주요 섹션 제목 */
   .Text--h2 {
-    font-size: var(--font-size-3xl, 30px);
+    font-size: clamp(1.5rem, 4vw, 2rem); /* 24px ~ 32px */
     font-weight: var(--font-weight-bold, 700);
     line-height: var(--font-lineHeight-tight, 1.25);
     letter-spacing: -0.01em;
@@ -34,28 +34,28 @@
 
   /* Heading 3 - 하위 섹션 제목 */
   .Text--h3 {
-    font-size: var(--font-size-2xl, 24px);
+    font-size: clamp(1.25rem, 3vw, 1.625rem); /* 20px ~ 26px */
     font-weight: var(--font-weight-semibold, 600);
     line-height: var(--font-lineHeight-snug, 1.375);
   }
 
   /* Heading 4 - 소제목 */
   .Text--h4 {
-    font-size: var(--font-size-xl, 20px);
+    font-size: clamp(1.125rem, 2.5vw, 1.375rem); /* 18px ~ 22px */
     font-weight: var(--font-weight-semibold, 600);
     line-height: var(--font-lineHeight-snug, 1.375);
   }
 
   /* Heading 5 - 작은 소제목 */
   .Text--h5 {
-    font-size: var(--font-size-lg, 18px);
+    font-size: clamp(1rem, 2vw, 1.25rem); /* 16px ~ 20px */
     font-weight: var(--font-weight-medium, 500);
     line-height: var(--font-lineHeight-normal, 1.5);
   }
 
   /* Heading 6 - 가장 작은 제목 */
   .Text--h6 {
-    font-size: var(--font-size-base, 16px);
+    font-size: clamp(0.875rem, 1.5vw, 1.125rem); /* 14px ~ 18px */
     font-weight: var(--font-weight-medium, 500);
     line-height: var(--font-lineHeight-normal, 1.5);
   }
