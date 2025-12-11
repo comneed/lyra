@@ -16,6 +16,12 @@ import "./components/avatar/avatar.module.css";
 import "./components/toast/toast.module.css";
 import "./components/card/card.module.css";
 import "./components/text/text.module.css";
+import "./components/navbar/navbar.module.css";
+import "./components/sidebar/sidebar.module.css";
+import "./components/layout/auth-layout.module.css";
+import "./components/layout/sidebar-layout.module.css";
+import "./components/layout/stacked-layout.module.css";
+import "./components/sheet/sheet.module.css";
 
 export { Button, type ButtonProps } from "./components/button/button";
 export {
