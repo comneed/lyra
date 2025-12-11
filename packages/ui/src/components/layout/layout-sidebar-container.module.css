@@ -1,0 +1,35 @@
+@layer components {
+  /* Mobile Sidebar */
+  .MobileSidebarPanel {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-width: 20rem; /* 80 */
+    padding: 0.5rem; /* 2 */
+    display: flex;
+    flex-direction: column;
+    /* Sheet component handles z-index generally, but we keep this for specificity if needed */
+  }
+
+  .MobileSidebarContainer {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    border-radius: var(--radius-lg, 8px);
+    background-color: var(--color-bg-surface-default, #fff);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--color-border-subtle, rgba(0, 0, 0, 0.05));
+    /* Ensure content inside doesn't overflow rounded corners */
+    overflow: hidden; 
+  }
+    
+
+  @media (prefers-color-scheme: dark) {
+    .MobileSidebarContainer {
+      background-color: var(--color-bg-surface-elevated, #18181b);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+}

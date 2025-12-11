@@ -1,30 +1,52 @@
 import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 import { clsx } from "clsx";
 import styles from "./text.module.css";
 
-export interface TextProps extends React.HTMLAttributes<HTMLElement> {
+const textVariants = cva(styles.Text, {
+  variants: {
+    align: {
+      left: styles['Text--left'],
+      center: styles['Text--center'],
+      right: styles['Text--right'],
+    },
+    variant: {
+      primary: styles['Text--primary'],
+      description: styles['Text--description'],
+      muted: styles['Text--muted'],
+      error: styles['Text--error'],
+      success: styles['Text--success'],
+    },
+    fullWidth: {
+      true: styles['Text--fullWidth'],
+    },
+    heading: {
+      h1: styles['Text--h1'],
+      h2: styles['Text--h2'],
+      h3: styles['Text--h3'],
+      h4: styles['Text--h4'],
+      h5: styles['Text--h5'],
+      h6: styles['Text--h6'],
+    },
+  },
+  defaultVariants: {
+    align: "left",
+    variant: "primary",
+  },
+});
+
+export interface TextProps
+  extends React.HTMLAttributes<HTMLParagraphElement>,
+  VariantProps<typeof textVariants> {
   /** 텍스트 내용 */
   children: React.ReactNode;
-
-  /** 텍스트 정렬 */
-  align?: 'left' | 'center' | 'right';
-
-  /** 텍스트 색상 변형 */
-  variant?: 'primary' | 'description' | 'muted' | 'error' | 'success';
-
-  /** 전체 너비 */
-  fullWidth?: boolean;
 }
 
-export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
+export interface HeadingProps
+  extends React.HTMLAttributes<HTMLHeadingElement>,
+  Omit<VariantProps<typeof textVariants>, 'heading' | 'fullWidth'> {
   /** 제목 내용 */
   children: React.ReactNode;
-
-  /** 텍스트 정렬 */
-  align?: 'left' | 'center' | 'right';
-
-  /** 텍스트 색상 변형 */
-  variant?: 'primary' | 'description' | 'muted' | 'error' | 'success';
 }
 
 // Root Text component - renders <p> by default
@@ -33,22 +55,18 @@ const TextRoot = React.forwardRef<HTMLParagraphElement, TextProps>(
     const {
       children,
       className,
-      align = 'left',
-      variant = 'primary',
-      fullWidth = false,
+      align,
+      variant,
+      fullWidth,
       ...other
     } = props;
 
-    const classNames = clsx(
-      styles.Text,
-      styles[`Text--${align}`],
-      styles[`Text--${variant}`],
-      fullWidth && styles['Text--fullWidth'],
-      className
-    );
-
     return (
-      <p ref={ref} className={classNames} {...other}>
+      <p
+        ref={ref}
+        className={clsx(textVariants({ align, variant, fullWidth }), className)}
+        {...other}
+      >
         {children}
       </p>
     );
@@ -63,21 +81,20 @@ const H1 = React.forwardRef<HTMLHeadingElement, HeadingProps>(
     const {
       children,
       className,
-      align = 'left',
-      variant = 'primary',
+      align,
+      variant,
       ...other
     } = props;
 
-    const classNames = clsx(
-      styles.Text,
-      styles['Text--h1'],
-      styles[`Text--${align}`],
-      styles[`Text--${variant}`],
-      className
-    );
-
     return (
-      <h1 ref={ref} className={classNames} {...other}>
+      <h1
+        ref={ref}
+        className={clsx(
+          textVariants({ align, variant, heading: "h1" }),
+          className
+        )}
+        {...other}
+      >
         {children}
       </h1>
     );
@@ -92,21 +109,20 @@ const H2 = React.forwardRef<HTMLHeadingElement, HeadingProps>(
     const {
       children,
       className,
-      align = 'left',
-      variant = 'primary',
+      align,
+      variant,
       ...other
     } = props;
 
-    const classNames = clsx(
-      styles.Text,
-      styles['Text--h2'],
-      styles[`Text--${align}`],
-      styles[`Text--${variant}`],
-      className
-    );
-
     return (
-      <h2 ref={ref} className={classNames} {...other}>
+      <h2
+        ref={ref}
+        className={clsx(
+          textVariants({ align, variant, heading: "h2" }),
+          className
+        )}
+        {...other}
+      >
         {children}
       </h2>
     );
@@ -121,21 +137,20 @@ const H3 = React.forwardRef<HTMLHeadingElement, HeadingProps>(
     const {
       children,
       className,
-      align = 'left',
-      variant = 'primary',
+      align,
+      variant,
       ...other
     } = props;
 
-    const classNames = clsx(
-      styles.Text,
-      styles['Text--h3'],
-      styles[`Text--${align}`],
-      styles[`Text--${variant}`],
-      className
-    );
-
     return (
-      <h3 ref={ref} className={classNames} {...other}>
+      <h3
+        ref={ref}
+        className={clsx(
+          textVariants({ align, variant, heading: "h3" }),
+          className
+        )}
+        {...other}
+      >
         {children}
       </h3>
     );
@@ -150,21 +165,20 @@ const H4 = React.forwardRef<HTMLHeadingElement, HeadingProps>(
     const {
       children,
       className,
-      align = 'left',
-      variant = 'primary',
+      align,
+      variant,
       ...other
     } = props;
 
-    const classNames = clsx(
-      styles.Text,
-      styles['Text--h4'],
-      styles[`Text--${align}`],
-      styles[`Text--${variant}`],
-      className
-    );
-
     return (
-      <h4 ref={ref} className={classNames} {...other}>
+      <h4
+        ref={ref}
+        className={clsx(
+          textVariants({ align, variant, heading: "h4" }),
+          className
+        )}
+        {...other}
+      >
         {children}
       </h4>
     );
@@ -179,21 +193,20 @@ const H5 = React.forwardRef<HTMLHeadingElement, HeadingProps>(
     const {
       children,
       className,
-      align = 'left',
-      variant = 'primary',
+      align,
+      variant,
       ...other
     } = props;
 
-    const classNames = clsx(
-      styles.Text,
-      styles['Text--h5'],
-      styles[`Text--${align}`],
-      styles[`Text--${variant}`],
-      className
-    );
-
     return (
-      <h5 ref={ref} className={classNames} {...other}>
+      <h5
+        ref={ref}
+        className={clsx(
+          textVariants({ align, variant, heading: "h5" }),
+          className
+        )}
+        {...other}
+      >
         {children}
       </h5>
     );
@@ -208,21 +221,20 @@ const H6 = React.forwardRef<HTMLHeadingElement, HeadingProps>(
     const {
       children,
       className,
-      align = 'left',
-      variant = 'primary',
+      align,
+      variant,
       ...other
     } = props;
 
-    const classNames = clsx(
-      styles.Text,
-      styles['Text--h6'],
-      styles[`Text--${align}`],
-      styles[`Text--${variant}`],
-      className
-    );
-
     return (
-      <h6 ref={ref} className={classNames} {...other}>
+      <h6
+        ref={ref}
+        className={clsx(
+          textVariants({ align, variant, heading: "h6" }),
+          className
+        )}
+        {...other}
+      >
         {children}
       </h6>
     );

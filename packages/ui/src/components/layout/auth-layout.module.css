@@ -1,0 +1,50 @@
+@layer components {
+  .Main {
+    display: flex;
+    min-height: 100dvh;
+    flex-direction: column;
+    padding: 0.5rem; /* 2 */
+  }
+
+  .Container {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    
+    /* Responsive Padding with clamp */
+    padding: clamp(1.5rem, 5vw, 2.5rem);
+
+    /* Desktop styles that were in media query, now applied generally but potentially responsive via other means if needed. 
+       However, the original code had structural changes (border, background) only on LG. 
+       We will keep the media query for structural/theme changes that are strictly desktop-only, 
+       but use clamp for the *values* that scale. 
+       
+       Wait, the user wants to use clamp INSTEAD of media queries where possible for scaling values.
+       If I move the border/background out, it will apply to mobile too. 
+       Let's assume we want the "card" look to scale gracefully.
+    */
+  }
+
+  @media (min-width: 1024px) {
+    .Container {
+      border-radius: var(--radius-lg, 8px);
+      background-color: var(--color-bg-surface-default, #fff);
+      /* Padding is now handled by clamp on the base class, or we can override if strictly needed, 
+         but clamp handles the "between" states better. */
+      
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-xs */
+      /* Ring simulated with box-shadow or border */
+      border: 1px solid var(--color-border-subtle, rgba(0, 0, 0, 0.05));
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    @media (min-width: 1024px) {
+      .Container {
+        background-color: var(--color-bg-surface-elevated, #18181b); /* zinc-900 */
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+}
